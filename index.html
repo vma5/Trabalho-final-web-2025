@@ -1,51 +1,75 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Pedidos - Instituição</title>
+    <title>IFNMG FOOD - Lanchonete</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/SUA_CHAVE_AQUI.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header class="main-header">
-        <nav class="container">
-            <a href="#" class="logo"></a>
-            <ul class="nav-links">
-                <li><a href="#quem-somos">Quem Somos</a></li>
-                <li><a href="#menu">Menu</a></li>
-                <li><a href="#login">Login</a></li>
-                <li class="carrinho-icone">
-                    <span class="quantidade-carrinho">0</span>
-                    <i class="fas fa-shopping-cart"></i>
-                </li>
-            </ul>
-        </nav>
+
+
+    <header>
+        <h1>IFNMG FOOD</h1>
+        <p>A lanchonete da sua instituição</p>
     </header>
+    <header>
+    <img src="images/logo.png" alt="Logo da FoodFusion" id="logo">
+    <h1>FoodFusion</h1>
+    <p>A lanchonete da sua instituição</p>
+   </header>
 
     <main>
-        <section id="quem-somos" class="secao-site container">
-            <h2>Quem Somos</h2>
-            <p>Conteúdo sobre a instituição...</p>
+        <section id="main-menu" class="visible">
+            <h2>Seja bem-vindo(a)!</h2>
+            <button id="show-register">Cadastrar-se</button>
+            <button id="show-login">Entrar</button>
         </section>
 
-        <section id="menu" class="secao-site container">
-            <h2>Cardápio do Dia</h2>
-            <div class="produtos-grid">
-                </div>
+        <section id="register-section" class="hidden">
+            <h2>Cadastro de Usuário</h2>
+            <form id="register-form">
+                <input type="text" id="reg-nome" placeholder="Nome Completo" required>
+                <input type="text" id="reg-username" placeholder="Nome de Usuário" required>
+                <input type="password" id="reg-senha" placeholder="Senha" required>
+                <select id="reg-tipo">
+                    <option value="aluno">Aluno</option>
+                    <option value="professor">Professor</option>
+                </select>
+                <button type="submit">Cadastrar</button>
+            </form>
+            <button id="back-to-main">Voltar</button>
+        </section>
+
+        <section id="login-section" class="hidden">
+            <h2>Login</h2>
+            <form id="login-form">
+                <input type="text" id="log-username" placeholder="Nome de Usuário" required>
+                <input type="password" id="log-senha" placeholder="Senha" required>
+                <button type="submit">Entrar</button>
+            </form>
+            <button id="back-to-main-from-login">Voltar</button>
+        </section>
+        
+        <section id="user-area" class="hidden">
+            <h2 id="welcome-message"></h2>
+            <p>Seu saldo atual: <span id="user-balance"></span></p>
+            
+            <h3>Cardápio</h3>
+            <ul id="menu-list"></ul>
+
+            <h3>Seu Pedido</h3>
+            <div id="cart">
+                <p id="cart-empty-message">Seu carrinho está vazio.</p>
+                <ul id="cart-list"></ul>
+                <p>Total: R$ <span id="cart-total">0.00</span></p>
+                <button id="checkout-btn">Finalizar Pedido</button>
+            </div>
+            
+            <button id="add-balance-btn">Adicionar Saldo</button>
+            <button id="logout-btn">Sair</button>
         </section>
     </main>
-
-    <div class="carrinho-modal">
-        <div class="conteudo-modal">
-            <span class="fechar-carrinho">&times;</span>
-            <h2>Seu Carrinho</h2>
-            <ul class="lista-carrinho">
-                </ul>
-            <p class="total-carrinho">Total: R$ 0.00</p>
-            <button class="finalizar-pedido">Finalizar Pedido</button>
-        </div>
-    </div>
 
     <script src="script.js"></script>
 </body>
