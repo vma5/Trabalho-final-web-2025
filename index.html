@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Pedidos - Instituição</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/SUA_CHAVE_AQUI.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="container">
+            <a href="#" class="logo"></a>
+            <ul class="nav-links">
+                <li><a href="#quem-somos">Quem Somos</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#login">Login</a></li>
+                <li class="carrinho-icone">
+                    <span class="quantidade-carrinho">0</span>
+                    <i class="fas fa-shopping-cart"></i>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="quem-somos" class="secao-site container">
+            <h2>Quem Somos</h2>
+            <p>Conteúdo sobre a instituição...</p>
+        </section>
+
+        <section id="menu" class="secao-site container">
+            <h2>Cardápio do Dia</h2>
+            <div class="produtos-grid">
+                </div>
+        </section>
+    </main>
+
+    <div class="carrinho-modal">
+        <div class="conteudo-modal">
+            <span class="fechar-carrinho">&times;</span>
+            <h2>Seu Carrinho</h2>
+            <ul class="lista-carrinho">
+                </ul>
+            <p class="total-carrinho">Total: R$ 0.00</p>
+            <button class="finalizar-pedido">Finalizar Pedido</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
