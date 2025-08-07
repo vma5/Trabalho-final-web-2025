@@ -15,7 +15,7 @@ const welcomeMessage = document.getElementById('welcome-message');
 const userBalanceSpan = document.getElementById('user-balance');
 const logoutBtn = document.getElementById('logout-btn');
 
-const menuList = document.getElementById('menu-list');
+const menuTableBody = document.querySelector('#menu-table tbody');
 const cartList = document.getElementById('cart-list');
 const cartTotalSpan = document.getElementById('cart-total');
 const checkoutBtn = document.getElementById('checkout-btn');
@@ -24,11 +24,11 @@ const cartEmptyMessage = document.getElementById('cart-empty-message');
 
 // --- Dados (Cardápio e Usuários) ---
 const cardapio = [
-    { id: 1, item: 'Hambúrguer', preco: 9.00 },
-    { id: 2, item: 'Snduiche Natural', preco: 6.00 },
-    { id: 3, item: 'Regrigerante', preco: 4.00 },
-    { id: 4, item: 'Suco Natural', preco: 3.50 }
-
+    { id: 1, item: 'Hambúrguer', preco: 10.00 },
+    { id: 2, item: 'Refrigerante', preco: 4.50 },
+    { id: 3, item: 'Batata Frita', preco: 8.00 },
+    { id: 4, item: 'Suco Natural', preco: 4.00 },
+    { id: 5, item: 'Sanduíche Natural', preco: 6.00 }
 ];
 
 let usuarios = JSON.parse(localStorage.getItem('usuarios')) || {};
@@ -47,6 +47,7 @@ function updateUI() {
     if (loggedInUser) {
         welcomeMessage.textContent = `Olá, ${loggedInUser.nome}!`;
         userBalanceSpan.textContent = loggedInUser.saldo.toFixed(2);
+        renderMenu(); // Chamamos a função para renderizar a tabela
         renderCart();
         showSection(userArea);
     } else {
@@ -55,15 +56,41 @@ function updateUI() {
 }
 
 function renderMenu() {
-    menuList.innerHTML = '';
+    menuTableBody.innerHTML = '';
+    
     cardapio.forEach(item => {
-        const li = document.createElement('li');
-        li.innerHTML = `
-            <img src="images/${item.item.toLowerCase().replace(' ', '-')}.png" alt="${item.item}">
-            <span>${item.item} - R$ ${item.preco.toFixed(2)}</span>
-            <button onclick="addToCart(${item.id})">Adicionar</button>
-        `;
-        menuList.appendChild(li);
+        const tr = document.createElement('tr');
+        
+        // Célula da Imagem
+        const tdImage = document.createElement('td');
+        const itemImage = document.createElement('img');
+        const nomeArquivo = item.item.toLowerCase().replace(' ', '-') + '.jpg';
+        itemImage.src = `images/${nomeArquivo}`;
+        itemImage.alt = item.item;
+        itemImage.classList.add('menu-item-image');
+        tdImage.appendChild(itemImage);
+        
+        // Célula do Nome do Item
+        const tdName = document.createElement('td');
+        tdName.textContent = item.item;
+        
+        // Célula do Preço
+        const tdPrice = document.createElement('td');
+        tdPrice.textContent = `R$ ${item.preco.toFixed(2)}`;
+        
+        // Célula da Ação (botão)
+        const tdAction = document.createElement('td');
+        const addButton = document.createElement('button');
+        addButton.textContent = 'Adicionar';
+        addButton.onclick = () => addToCart(item.id);
+        tdAction.appendChild(addButton);
+        
+        tr.appendChild(tdImage);
+        tr.appendChild(tdName);
+        tr.appendChild(tdPrice);
+        tr.appendChild(tdAction);
+        
+        menuTableBody.appendChild(tr);
     });
 }
 
@@ -117,7 +144,7 @@ function handleLogin(e) {
     if (usuarios[username] && usuarios[username].senha === senha) {
         loggedInUser = usuarios[username];
         alert(`Bem-vindo(a), ${loggedInUser.nome}!`);
-        carrinho = []; // Limpa o carrinho ao fazer login
+        carrinho = [];
         updateUI();
     } else {
         alert('Nome de usuário ou senha incorretos.');
@@ -189,6 +216,5 @@ addBalanceBtn.addEventListener('click', addBalance);
 
 // --- Inicialização ---
 document.addEventListener('DOMContentLoaded', () => {
-    renderMenu();
     updateUI();
 });

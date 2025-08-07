@@ -3,21 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IFNMG FOOD - Lanchonete</title>
+    <title>IFNMG FOOD - Lanchonete IFNMG</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-
     <header>
+        <img src="images/logo.png" alt="Logo do Instituto Federal Norte de Minas Gerais" id="logo">
         <h1>IFNMG FOOD</h1>
-        <p>A lanchonete da sua instituição</p>
-    </header>
-    <header>
-    <img src="images/logo.png" alt="Logo da FoodFusion" id="logo">
-    <h1>FoodFusion</h1>
-    <p>A lanchonete da sua instituição</p>
-   </header>
 
     <main>
         <section id="main-menu" class="visible">
@@ -56,7 +49,18 @@
             <p>Seu saldo atual: <span id="user-balance"></span></p>
             
             <h3>Cardápio</h3>
-            <ul id="menu-list"></ul>
+            <table id="menu-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Item</th>
+                        <th>Preço</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
 
             <h3>Seu Pedido</h3>
             <div id="cart">

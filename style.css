@@ -1,6 +1,6 @@
 /* Paleta de Cores */
 :root {
-    --vermelho-principal: #e74c3c;
+    --vermelho-principal: #ea2812;
     --amarelo-secundario: #f1c40f;
     --cinza-claro: #f0f2f5;
     --cinza-escuro: #333;
@@ -11,36 +11,56 @@ body {
     font-family: sans-serif;
     background-color: var(--cinza-claro);
     color: var(--cinza-escuro);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 20px;
+    /* Remove o display flex do body para que o header possa ocupar a tela inteira */
+    margin: 0; /* Remove a margem padrão do body */
+    padding: 0;
 }
 
 header {
     text-align: center;
-    margin-bottom: 30px;
-}
+    /* Ajustes para tela cheia */
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
 
-header {
-    /* ... outros estilos */
-    background-image: url('images/banner-lanches.jpg');
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url('images/banner.jpg');
     background-size: cover;
     background-position: center;
+    color: rgb(11, 10, 10);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    border-radius: 0; /* Remove o border-radius para que o banner cubra toda a tela */
+}
+
+#logo {
+    max-width: 650px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
 }
 
 h1 {
-    color: var(--vermelho-principal);
+    color: rgb(249, 248, 248);
+    font-size: 3em; /* Aumenta o tamanho da fonte do título */
+}
+
+p {
+    font-size: 1.2em;
 }
 
 main {
     background-color: var(--branco);
-    padding: 20px 40px;
+    padding: 20px 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     width: 100%;
-    max-width: 500px;
+    max-width: 550px;
+    margin: 20px auto; /* Centraliza o conteúdo principal e adiciona margem */
 }
 
 section {
@@ -79,39 +99,66 @@ button {
 }
 
 button:hover {
-    background-color: #c0392b; /* Um tom mais escuro de vermelho */
+    background-color: #c0392b;
 }
 
-/* Estilo para botões de ação secundária, como os de "Adicionar" e "Voltar" */
-#menu-list li button, #add-balance-btn, #back-to-main, #back-to-main-from-login {
+/* Estilo para botões de ação secundária */
+#menu-table button, #add-balance-btn, #back-to-main, #back-to-main-from-login, #checkout-btn {
     background-color: var(--amarelo-secundario);
     color: var(--cinza-escuro);
 }
 
-#menu-list li button:hover, #add-balance-btn:hover, #back-to-main:hover, #back-to-main-from-login:hover {
-    background-color: #f39c12; /* Um tom mais escuro de amarelo */
+#menu-table button:hover, #add-balance-btn:hover, #back-to-main:hover, #back-to-main-from-login:hover, #checkout-btn:hover {
+    background-color: #f20f0f;
 }
 
 #logout-btn {
-    background-color: #95a5a6; /* Cor neutra para o botão de logout */
+    background-color: #95a5a6;
+    color: white;
 }
 
 #logout-btn:hover {
     background-color: #7f8c8d;
 }
 
-#menu-list li {
-    list-style: none;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Estilos da Tabela do Cardápio */
+#menu-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-#menu-list li button {
+#menu-table th, #menu-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#menu-table th {
+    background-color: var(--vermelho-principal);
+    color: white;
+    font-weight: bold;
+}
+
+#menu-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#menu-table tbody tr:hover {
+    background-color: #f1c40f;
+}
+
+.menu-item-image {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+    vertical-align: middle;
+}
+
+#menu-table button {
     width: auto;
-    padding: 5px 10px;
+    padding: 8px 12px;
 }
 
 #cart-list li {
