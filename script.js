@@ -64,8 +64,8 @@ function renderMenu() {
         // Célula da Imagem
         const tdImage = document.createElement('td');
         const itemImage = document.createElement('img');
-        const nomeArquivo = item.item.toLowerCase().replace(' ', '-') + '.jpg';
-        itemImage.src = `images/${nomeArquivo}`;
+        const imagnes = item.item.toLowerCase().replace(' ', '-') + '.jpg';
+        itemImage.src = `images/${imagnes}`;
         itemImage.alt = item.item;
         itemImage.classList.add('menu-item-image');
         tdImage.appendChild(itemImage);
