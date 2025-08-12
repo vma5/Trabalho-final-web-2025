@@ -47,7 +47,7 @@ function updateUI() {
     if (loggedInUser) {
         welcomeMessage.textContent = `Olá, ${loggedInUser.nome}!`;
         userBalanceSpan.textContent = loggedInUser.saldo.toFixed(2);
-        renderMenu(); // Chamamos a função para renderizar a tabela
+        renderMenu();
         renderCart();
         showSection(userArea);
     } else {
@@ -61,24 +61,24 @@ function renderMenu() {
     cardapio.forEach(item => {
         const tr = document.createElement('tr');
         
-        // Célula da Imagem
         const tdImage = document.createElement('td');
         const itemImage = document.createElement('img');
-        const imagnes = item.item.toLowerCase().replace(' ', '-') + '.jpg';
-        itemImage.src = `images/${imagnes}`;
+        
+        // --- CÓDIGO CRÍTICO PARA AS IMAGENS ---
+        const images = item.item.toLowerCase().replace(/ /g, '-') + '.jpg';
+        itemImage.src = `images/${images}`; 
+        // -------------------------------------
+
         itemImage.alt = item.item;
         itemImage.classList.add('menu-item-image');
         tdImage.appendChild(itemImage);
         
-        // Célula do Nome do Item
         const tdName = document.createElement('td');
         tdName.textContent = item.item;
         
-        // Célula do Preço
         const tdPrice = document.createElement('td');
         tdPrice.textContent = `R$ ${item.preco.toFixed(2)}`;
         
-        // Célula da Ação (botão)
         const tdAction = document.createElement('td');
         const addButton = document.createElement('button');
         addButton.textContent = 'Adicionar';
